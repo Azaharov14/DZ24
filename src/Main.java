@@ -4,8 +4,11 @@ public class Main {
     public static void main(String[] args) {
         taskOne();
         int year = 2024;
-        isLeapYear(year);
-
+        if (isLeapYear(year)) {
+            System.out.println("Это высокосный год");
+        } else {
+            System.out.println("Это не высокосный год");
+        }
         taskTwo();
         int platform = 0;
         int year2 = 2010;
@@ -13,9 +16,7 @@ public class Main {
 
         taskThree();
         int deliveryDistance = 95;
-        int term = 1;
-        calculateDeliveryDays(deliveryDistance, term);
-
+        calculateDeliveryDays(deliveryDistance);
     }
 
     public static void taskOne() {
@@ -28,13 +29,9 @@ public class Main {
         System.out.println(" \n  Задача №3 ");
     }
 
-    public static void isLeapYear(int year) {
-        boolean leapYearOn = (year % 4 == 0) && (year % 100 != 0);
-        if (year % 4 == 0 || year % 100 != 0 && year % 400 == 0) {
-            System.out.print(year + " - високосный год ");
-        } else  {
-            System.out.print(year + " - не високосный год ");
-        }
+    public static boolean isLeapYear(int year) {
+        // возвращаю true или false в main для последующего анализа (проверил, работает)
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
     public static void isPhonePlatform(int platform, int year2) {
         boolean yearPhone = year2 <= 2015;
@@ -49,9 +46,10 @@ public class Main {
         }
     }
 
-    public static int calculateDeliveryDays(int distance, int day) {
-        boolean EstimatedDeliveryTime = (distance >= 0) && (distance < 20);
-        if (EstimatedDeliveryTime) {
+    public static int calculateDeliveryDays(int distance) {
+        boolean estimatedDeliveryTime = (distance >= 0) && (distance < 20);
+        int day = 0;
+        if (estimatedDeliveryTime) {
             System.out.printf("Потребуется дней: %s %n", day);
         } else if (distance >= 20 && (distance < 60)) {
             System.out.printf("Потребуется дней: %s %n", day += 1);
