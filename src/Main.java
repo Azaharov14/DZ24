@@ -22,17 +22,27 @@ public class Main {
     public static void taskOne() {
         System.out.println(" \n  Задача №1 ");
     }
+
     public static void taskTwo() {
         System.out.println(" \n Задача №2 ");
     }
+
     public static void taskThree() {
         System.out.println(" \n  Задача №3 ");
+        int deliveryDistance = 95;
+        int deliveryDay = calculateDeliveryDays(deliveryDistance);
+        if (deliveryDay > 0) {
+            System.out.println("Потребуется дней:" + deliveryDay);
+        } else {
+            System.out.println("Доставки нет");
+        }
     }
 
     public static boolean isLeapYear(int year) {
         // возвращаю true или false в main для последующего анализа (проверил, работает)
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
+
     public static void isPhonePlatform(int platform, int year2) {
         boolean yearPhone = year2 <= 2015;
         if (platform == 0 && yearPhone) {
@@ -47,16 +57,14 @@ public class Main {
     }
 
     public static int calculateDeliveryDays(int distance) {
-        boolean estimatedDeliveryTime = (distance >= 0) && (distance < 20);
+
         int day = 0;
-        if (estimatedDeliveryTime) {
-            System.out.printf("Потребуется дней: %s %n", day);
-        } else if (distance >= 20 && (distance < 60)) {
-            System.out.printf("Потребуется дней: %s %n", day += 1);
-        } else if (distance >= 60 && (distance < 100)) {
-            System.out.printf("Потребуется дней: %s %n", day += 2);
-        } else {
-            System.out.println("Доставка не осущетсвляется");
+        if (distance <= 20) {
+            day = 1;
+        } else if (distance < 60) {
+            day = 2;
+        } else if (distance <= 100) {
+            day = 3;
         }
         return day;
     }
